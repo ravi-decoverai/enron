@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enron Scandal - Key People</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+            background: #f6f6f6;
+            color: #202122;
+            line-height: 1.6;
+        }
+
+        /* === TOP BANNER === */
+        .site-header {
+            background: #fff;
+            border-bottom: 1px solid #a7d7f9;
+            padding: 8px 0;
+        }
+        .site-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .site-logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+        }
+        .site-logo span { color: #36c; }
+        .site-tagline {
+            font-size: 0.78rem;
+            color: #54595d;
+            font-style: italic;
+        }
+
+        /* === MAIN LAYOUT === */
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+        }
+
+        /* === SIDEBAR TOC === */
+        .sidebar {
+            width: 240px;
+            min-width: 240px;
+            background: #fff;
+            border-right: 1px solid #a7d7f9;
+            padding: 16px 12px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            font-size: 0.85rem;
+        }
+        .sidebar h3 {
+            font-size: 0.9rem;
+            border-bottom: 1px solid #a7d7f9;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+            color: #000;
+        }
+        .toc-section { margin-bottom: 14px; }
+        .toc-section-title {
+            font-weight: bold;
+            font-size: 0.82rem;
+            color: #54595d;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .sidebar a {
+            display: block;
+            color: #36c;
+            text-decoration: none;
+            padding: 3px 8px;
+            border-radius: 3px;
+            transition: background 0.15s;
+        }
+        .sidebar a:hover {
+            background: #eaf3ff;
+            text-decoration: underline;
+        }
+        .sidebar a.active {
+            background: #eaf3ff;
+            font-weight: bold;
+        }
+
+        /* === CONTENT AREA === */
+        .content {
+            flex: 1;
+            background: #fff;
+            padding: 20px 32px 60px;
+            min-height: 100vh;
+            border-left: none;
+        }
+
+        /* === PAGE TITLE === */
+        .page-title {
+            font-size: 1.95rem;
+            font-weight: normal;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
+            font-family: 'Linux Libertine', Georgia, serif;
+        }
+        .page-subtitle {
+            font-size: 0.88rem;
+            color: #54595d;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        /* === HATNOTE === */
+        .hatnote {
+            font-size: 0.88rem;
+            font-style: italic;
+            color: #54595d;
+            padding: 4px 0 12px 0;
+        }
+
+        /* === INFOBOX === */
+        .infobox {
+            float: right;
+            width: 320px;
+            margin: 0 0 16px 20px;
+            border: 1px solid #a2a9b1;
+            background: #f8f9fa;
+            font-size: 0.88rem;
+            border-spacing: 0;
+        }
+        .infobox-header {
+            background: #1a4a7a;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .infobox-subheader {
+            background: #cedff2;
+            text-align: center;
+            padding: 6px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        .infobox-image {
+            text-align: center;
+            padding: 10px;
+            background: #f8f9fa;
+        }
+        .infobox-image .placeholder-img {
+            width: 200px;
+            height: 140px;
+            background: #ddd;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.8rem;
+            border: 1px solid #ccc;
+        }
+        .infobox table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .infobox td {
+            padding: 5px 10px;
+            border-top: 1px solid #ddd;
+            vertical-align: top;
+        }
+        .infobox td:first-child {
+            font-weight: bold;
+            width: 110px;
+            background: #eaecf0;
+        }
+
+        /* === SECTION HEADINGS === */
+        h2.section-heading {
+            font-size: 1.5rem;
+            font-weight: normal;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 4px;
+            margin: 28px 0 12px;
+            font-family: 'Linux Libertine', Georgia, serif;
+        }
+        h3.subsection-heading {
+            font-size: 1.15rem;
+            font-weight: bold;
+            margin: 20px 0 8px;
+            font-family: 'Linux Libertine', Georgia, serif;
+        }
+
+        /* === PERSON CARD === */
+        .person-card {
+            border: 1px solid #c8ccd1;
+            margin: 20px 0;
+            background: #fff;
+        }
+        .person-card-header {
+            background: #1a4a7a;
+            color: #fff;
+            padding: 12px 16px;
+            font-size: 1.15rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .person-role-badge {
+            font-size: 0.75rem;
+            background: rgba(255,255,255,0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: normal;
+        }
+        .person-card-body {
+            display: flex;
+            gap: 0;
+        }
+        .person-sidebar {
+            width: 220px;
+            min-width: 220px;
+            background: #f8f9fa;
+            border-right: 1px solid #eaecf0;
+            padding: 14px;
+            font-size: 0.84rem;
+        }
+        .person-avatar {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #cedff2 0%, #eaecf0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #1a4a7a;
+            border: 1px solid #c8ccd1;
+            margin-bottom: 10px;
+        }
+        .person-meta-table { width: 100%; }
+        .person-meta-table td {
+            padding: 3px 0;
+            vertical-align: top;
+            border-bottom: 1px solid #eaecf0;
+        }
+        .person-meta-table td:first-child {
+            font-weight: bold;
+            color: #54595d;
+            width: 70px;
+            font-size: 0.8rem;
+        }
+        .person-content {
+            flex: 1;
+            padding: 14px 18px;
+        }
+        .person-content h4 {
+            font-size: 0.95rem;
+            color: #1a4a7a;
+            margin: 12px 0 6px;
+            border-bottom: 1px solid #eaecf0;
+            padding-bottom: 3px;
+        }
+        .person-content h4:first-child { margin-top: 0; }
+        .person-content p {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        .person-content ul {
+            margin: 4px 0 8px 20px;
+            font-size: 0.9rem;
+        }
+        .person-content li { margin-bottom: 4px; }
+
+        /* === CHARGES TABLE === */
+        .charges-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.78rem;
+            font-weight: bold;
+            margin: 2px 2px;
+        }
+        .badge-guilty { background: #fee7e6; color: #d33; border: 1px solid #d33; }
+        .badge-convicted { background: #fee7e6; color: #b32424; border: 1px solid #b32424; }
+        .badge-plea { background: #fef6e7; color: #ac6600; border: 1px solid #ac6600; }
+        .badge-deceased { background: #eaecf0; color: #54595d; border: 1px solid #72777d; }
+        .badge-cooperator { background: #e6f9e6; color: #14866d; border: 1px solid #14866d; }
+        .badge-witness { background: #eaf3ff; color: #36c; border: 1px solid #36c; }
+        .badge-prosecution { background: #f0e6ff; color: #6b3fa0; border: 1px solid #6b3fa0; }
+
+        /* === QUOTE BOX === */
+        .quote-box {
+            border-left: 4px solid #1a4a7a;
+            background: #f8f9fa;
+            padding: 10px 16px;
+            margin: 10px 0;
+            font-style: italic;
+            font-size: 0.88rem;
+        }
+        .quote-box .attribution {
+            font-style: normal;
+            font-size: 0.82rem;
+            color: #54595d;
+            margin-top: 6px;
+        }
+
+        /* === TIMELINE === */
+        .timeline {
+            border-left: 3px solid #1a4a7a;
+            margin: 16px 0 16px 12px;
+            padding-left: 20px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 14px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #1a4a7a;
+        }
+        .timeline-date {
+            font-weight: bold;
+            font-size: 0.84rem;
+            color: #1a4a7a;
+        }
+        .timeline-text {
+            font-size: 0.88rem;
+            color: #202122;
+        }
+
+        /* === OVERVIEW TABLE === */
+        .wiki-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 16px 0;
+            font-size: 0.88rem;
+        }
+        .wiki-table th {
+            background: #eaecf0;
+            padding: 8px 12px;
+            border: 1px solid #a2a9b1;
+            text-align: left;
+            font-weight: bold;
+        }
+        .wiki-table td {
+            padding: 6px 12px;
+            border: 1px solid #c8ccd1;
+            vertical-align: top;
+        }
+        .wiki-table tr:nth-child(even) { background: #f8f9fa; }
+
+        /* === GENERAL TEXT === */
+        .content p {
+            margin-bottom: 10px;
+            font-size: 0.92rem;
+        }
+        .content > p:first-of-type::first-letter {
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+
+        /* === FOOTER === */
+        .page-footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            font-size: 0.8rem;
+            color: #54595d;
+            border-top: 1px solid #a2a9b1;
+            background: #f8f9fa;
+            text-align: center;
+        }
+        .source-list {
+            font-size: 0.82rem;
+            margin: 10px 0;
+        }
+        .source-list li { margin-bottom: 3px; }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 900px) {
+            .page-wrapper { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                min-width: auto;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid #a7d7f9;
+            }
+            .infobox { float: none; width: 100%; margin: 0 0 16px 0; }
+            .person-card-body { flex-direction: column; }
+            .person-sidebar { width: 100%; min-width: auto; border-right: none; border-bottom: 1px solid #eaecf0; }
+        }
+
+        .clearfix::after { content: ''; display: table; clear: both; }
+    </style>
+</head>
+<body>
+
+<!-- ===================== SITE HEADER ===================== -->
+<header class="site-header">
+    <div class="site-header-inner">
+        <a class="site-logo" href="#">Enron<span>Pedia</span></a>
+        <span class="site-tagline">A comprehensive reference on the Enron scandal</span>
+    </div>
+</header>
+
+<div class="page-wrapper">
+
+<!-- ===================== SIDEBAR ===================== -->
+<nav class="sidebar">
+    <h3>Contents</h3>
+
+    <div class="toc-section">
+        <div class="toc-section-title">Overview</div>
+        <a href="#top">Introduction</a>
+        <a href="#timeline">Timeline of Events</a>
+        <a href="#summary-table">Key People Summary</a>
+    </div>
+
+    <div class="toc-section">
+        <div class="toc-section-title">Principal Defendants</div>
+        <a href="#kenneth-lay">Kenneth L. Lay</a>
+        <a href="#jeffrey-skilling">Jeffrey K. Skilling</a>
+        <a href="#richard-causey">Richard A. Causey</a>
+    </div>
+
+    <div class="toc-section">
+        <div class="toc-section-title">Named Conspirators</div>
+        <a href="#andrew-fastow">Andrew S. Fastow</a>
+        <a href="#ben-glisan">Ben F. Glisan Jr.</a>
+        <a href="#david-delainey">David W. Delainey</a>
+        <a href="#wesley-colwell">Wesley Colwell</a>
+        <a href="#michael-kopper">Michael Kopper</a>
+    </div>
+
+    <div class="toc-section">
+        <div class="toc-section-title">Whistleblower</div>
+        <a href="#sherron-watkins">Sherron Watkins</a>
+    </div>
+
+    <div class="toc-section">
+        <div class="toc-section-title">Trial Witnesses</div>
+        <a href="#christopher-barry">Christopher B. Barry</a>
+        <a href="#jerry-arnold">Jerry Arnold</a>
+        <a href="#robert-maclane">Robert D. McLane Jr.</a>
+        <a href="#edward-bronson">Edward J. Bronson</a>
+        <a href="#george-kinnear">George Kinnear</a>
+    </div>
+
+    <div class="toc-section">
+        <div class="toc-section-title">Legal Team</div>
+        <a href="#prosecution">Prosecution</a>
+        <a href="#defense">Defense Attorneys</a>
+        <a href="#judge">Judge Sim Lake</a>
+    </div>
+
+    <div class="toc-section">
+        <div class="toc-section-title">Reference</div>
+        <a href="#sources">Source Documents</a>
+    </div>
+</nav>
+
+<!-- ===================== MAIN CONTENT ===================== -->
+<main class="content" id="top">
+
+<h1 class="page-title">Enron Scandal: Key People</h1>
+<p class="page-subtitle">From the superseding indictment (Cr. No. H-04-25), trial transcripts, and related court documents in United States v. Causey, Skilling, and Lay</p>
+
+<div class="hatnote">This page documents key individuals involved in the Enron corporate fraud case, drawn exclusively from the case files in this dataset.</div>
+
+<!-- === INFOBOX === -->
+<div class="infobox">
+    <div class="infobox-header">United States v. Causey, Skilling, and Lay</div>
+    <div class="infobox-subheader">Superseding Indictment &amp; Trial</div>
+    <table>
+        <tr><td>Court</td><td>U.S. District Court, S.D. Texas, Houston Division</td></tr>
+        <tr><td>Case No.</td><td>Cr. No. H-04-25 (S-2)</td></tr>
+        <tr><td>Filed</td><td>July 7, 2004</td></tr>
+        <tr><td>Trial Date</td><td>January &ndash; May 2006</td></tr>
+        <tr><td>Judge</td><td>Hon. Sim Lake</td></tr>
+        <tr><td>Defendants</td><td>Kenneth L. Lay<br>Jeffrey K. Skilling<br>Richard A. Causey</td></tr>
+        <tr><td>Counts</td><td>53 total counts</td></tr>
+        <tr><td>Bankruptcy</td><td>December 2, 2001</td></tr>
+        <tr><td>Peak Stock</td><td>~$90/share (2000)</td></tr>
+        <tr><td>Losses</td><td>Exceeded $100 million</td></tr>
+    </table>
+</div>
+
+<p>The <b>Enron scandal</b> was a massive corporate fraud that led to the bankruptcy of Enron Corp. on December 2, 2001. Before its collapse, Enron was the seventh-largest corporation in the United States, an Oregon-incorporated company headquartered in Houston, Texas, engaged in the purchase and sale of natural gas and power, construction and ownership of pipelines, provision of telecommunications services, and energy trading.</p>
+
+<p>The fraud was carried out through a wide-ranging scheme to deceive the investing public about the true performance of Enron's businesses by manipulating publicly reported financial results and making false and misleading public statements. The conspiracy's objectives included reporting recurring earnings that falsely appeared to grow 15-20% annually, concealing large losses, masking the true magnitude of debt, deceiving credit rating agencies, and artificially inflating Enron's stock price.</p>
+
+<!-- ===================== TIMELINE ===================== -->
+<h2 class="section-heading" id="timeline">Timeline of Key Events</h2>
+<div class="timeline">
+    <div class="timeline-item">
+        <div class="timeline-date">1986</div>
+        <div class="timeline-text">Kenneth Lay named CEO and Chairman of Enron upon its formation.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">August 1990</div>
+        <div class="timeline-text">Enron hires Jeffrey Skilling.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">January 1997</div>
+        <div class="timeline-text">Skilling promoted to President and COO.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">February 2001</div>
+        <div class="timeline-text">Skilling named President and CEO; Lay continues as Chairman.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">June 1999</div>
+        <div class="timeline-text">LJM Cayman partnership created, managed by CFO Andrew Fastow, to conduct SPE transactions with Enron.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">Spring 2000</div>
+        <div class="timeline-text">"Raptor" hedging structures created between Enron and LJM to conceal losses.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">January 20, 2000</div>
+        <div class="timeline-text">Skilling makes false claims about EBS at analyst conference; Enron stock rises from $47 to $67/share.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">August 14, 2001</div>
+        <div class="timeline-text">Skilling abruptly resigns as CEO; Lay resumes the position.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">August 2001</div>
+        <div class="timeline-text">Sherron Watkins writes anonymous memo warning Lay about accounting scandals.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">September 26, 2001</div>
+        <div class="timeline-text">Lay tells employees at online forum: "the third quarter is looking great" and encourages stock purchases. He had been secretly selling $24 million in Enron stock.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">October 16, 2001</div>
+        <div class="timeline-text">Enron announces ~$1 billion in losses for Q3; losses artificially capped to protect credit rating.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">October 22, 2001</div>
+        <div class="timeline-text">SEC investigation announced.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">November 8, 2001</div>
+        <div class="timeline-text">Enron announces restatement of financials for 1997-2001, reducing net income by $586 million.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">November 28, 2001</div>
+        <div class="timeline-text">Credit rating downgraded to "junk"; Dynegy merger collapses.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">December 2, 2001</div>
+        <div class="timeline-text">Enron files for bankruptcy. Stock that traded above $80 less than a year earlier is virtually worthless.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">July 7, 2004</div>
+        <div class="timeline-text">Superseding indictment filed against Lay, Skilling, and Causey.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">May 25, 2006</div>
+        <div class="timeline-text">Lay and Skilling found guilty on multiple counts.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">July 5, 2006</div>
+        <div class="timeline-text">Kenneth Lay dies of heart attack before sentencing; conviction vacated.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">October 23, 2006</div>
+        <div class="timeline-text">Skilling sentenced to 24 years and 4 months in federal prison.</div>
+    </div>
+</div>
+
+<!-- ===================== SUMMARY TABLE ===================== -->
+<h2 class="section-heading" id="summary-table">Key People at a Glance</h2>
+<table class="wiki-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Key Detail</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#kenneth-lay">Kenneth L. Lay</a></td>
+            <td>CEO &amp; Chairman</td>
+            <td><span class="charges-badge badge-deceased">Deceased</span></td>
+            <td>Convicted on 10 counts; conviction vacated after death</td>
+        </tr>
+        <tr>
+            <td><a href="#jeffrey-skilling">Jeffrey K. Skilling</a></td>
+            <td>President &amp; CEO</td>
+            <td><span class="charges-badge badge-convicted">Convicted</span></td>
+            <td>Found guilty on 19 counts; sentenced to 24+ years</td>
+        </tr>
+        <tr>
+            <td><a href="#richard-causey">Richard A. Causey</a></td>
+            <td>Chief Accounting Officer</td>
+            <td><span class="charges-badge badge-plea">Plea Deal</span></td>
+            <td>Pled guilty to securities fraud; sentenced to 5.5 years</td>
+        </tr>
+        <tr>
+            <td><a href="#andrew-fastow">Andrew S. Fastow</a></td>
+            <td>Chief Financial Officer</td>
+            <td><span class="charges-badge badge-cooperator">Cooperator</span></td>
+            <td>Pled guilty; key government witness; sentenced to 6 years</td>
+        </tr>
+        <tr>
+            <td><a href="#ben-glisan">Ben F. Glisan Jr.</a></td>
+            <td>Treasurer</td>
+            <td><span class="charges-badge badge-plea">Plea Deal</span></td>
+            <td>First Enron executive to go to prison; 5-year sentence</td>
+        </tr>
+        <tr>
+            <td><a href="#david-delainey">David W. Delainey</a></td>
+            <td>CEO, Enron North America &amp; EES</td>
+            <td><span class="charges-badge badge-cooperator">Cooperator</span></td>
+            <td>Pled guilty to insider trading; key trial witness</td>
+        </tr>
+        <tr>
+            <td><a href="#michael-kopper">Michael Kopper</a></td>
+            <td>Managing Director, Global Finance</td>
+            <td><span class="charges-badge badge-cooperator">Cooperator</span></td>
+            <td>First Enron executive to plead guilty; ran off-balance sheet vehicles</td>
+        </tr>
+        <tr>
+            <td><a href="#sherron-watkins">Sherron Watkins</a></td>
+            <td>VP, Corporate Development</td>
+            <td><span class="charges-badge badge-witness">Whistleblower</span></td>
+            <td>Warned Lay about accounting improprieties in August 2001</td>
+        </tr>
+        <tr>
+            <td><a href="#christopher-barry">Christopher B. Barry</a></td>
+            <td>Expert Witness (Defense)</td>
+            <td><span class="charges-badge badge-witness">Witness</span></td>
+            <td>Finance professor; testified on Lay's stock holdings and CEO overconfidence</td>
+        </tr>
+        <tr>
+            <td><a href="#robert-maclane">Robert D. McLane Jr.</a></td>
+            <td>Character Witness (Defense)</td>
+            <td><span class="charges-badge badge-witness">Witness</span></td>
+            <td>Houston Astros owner; testified to Lay's community leadership</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="clearfix"></div>
+
+<!-- ===================== PRINCIPAL DEFENDANTS ===================== -->
+<h2 class="section-heading">Principal Defendants</h2>
+
+<!-- KENNETH LAY -->
+<div class="person-card" id="kenneth-lay">
+    <div class="person-card-header">
+        Kenneth L. Lay
+        <span class="person-role-badge">CEO &amp; Chairman of the Board</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">KL</div>
+            <table class="person-meta-table">
+                <tr><td>Title</td><td>CEO &amp; Chairman of the Board of Directors</td></tr>
+                <tr><td>Tenure</td><td>1986 &ndash; Dec 2001</td></tr>
+                <tr><td>Counts</td><td>1, 12-13, 27-30, 38-41</td></tr>
+                <tr><td>Verdict</td><td><span class="charges-badge badge-guilty">Guilty</span></td></tr>
+                <tr><td>Status</td><td><span class="charges-badge badge-deceased">Deceased</span></td></tr>
+                <tr><td>Profit</td><td>~$217M from stock sales (1998-2001)</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Background</h4>
+            <p>Kenneth Lee Lay was named Chief Executive Officer and Chairman of the Board of Directors of Enron upon its formation in 1986. He held both positions until February 2001, when he stepped down as CEO but continued as Chairman. After Skilling's abrupt resignation on August 14, 2001, Lay resumed the CEO position and took control of the conspiracy.</p>
+
+            <h4>Role in the Fraud</h4>
+            <p>According to the indictment, Lay and his co-conspirators engaged in a wide-ranging scheme to deceive the investing public by manipulating Enron's publicly reported financial results and making false and misleading public statements about Enron's financial condition. After Skilling's departure, Lay intensified oversight of day-to-day operations and took over leadership of the conspiracy.</p>
+            <ul>
+                <li>Knew of at least $7 billion in embedded losses by September 2001</li>
+                <li>Artificially capped Q3 2001 losses at ~$1 billion to protect credit rating</li>
+                <li>Made false statements to employees, analysts, and credit rating agencies</li>
+                <li>Told employees on September 26, 2001 that Enron stock was "an incredible bargain" while secretly selling $24 million in stock</li>
+                <li>Circumvented goodwill impairment accounting standards regarding Wessex (~$700M)</li>
+                <li>Personally profited ~$300M from Enron stock options and restricted stock (1998-2001), netting over $217M</li>
+            </ul>
+
+            <h4>Bank Fraud (Counts 38-41)</h4>
+            <p>Lay was separately charged with bank fraud for defrauding Bank of America, Chase Bank of Texas, and Compass Bank. Between January 1999 and November 2001, he controlled non-purpose lines of credit totaling up to $50 million but used the proceeds to purchase and carry margin stock, in violation of his representations to the banks.</p>
+
+            <div class="quote-box">
+                "[O]ur liquidity is fine. As a matter of fact, it's better than fine, it's strong."
+                <div class="attribution">&mdash; Kenneth Lay, All Employees Meeting, October 23, 2001 (one month before bankruptcy)</div>
+            </div>
+
+            <div class="quote-box">
+                "[W]e don't have anything we're trying to hide. . . . I'm disclosing everything that we've found."
+                <div class="attribution">&mdash; Kenneth Lay, Analyst Conference Call, November 12, 2001</div>
+            </div>
+
+            <h4>Trial &amp; Outcome</h4>
+            <p>Found guilty on May 25, 2006 on 10 counts including conspiracy, securities fraud, wire fraud, and bank fraud. Lay died of a heart attack on July 5, 2006, before sentencing. His conviction was subsequently vacated by the court due to his death.</p>
+        </div>
+    </div>
+</div>
+
+<!-- JEFFREY SKILLING -->
+<div class="person-card" id="jeffrey-skilling">
+    <div class="person-card-header">
+        Jeffrey K. Skilling
+        <span class="person-role-badge">President &amp; CEO</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">JS</div>
+            <table class="person-meta-table">
+                <tr><td>Title</td><td>President &amp; CEO of Enron</td></tr>
+                <tr><td>Tenure</td><td>1990 &ndash; Aug 14, 2001</td></tr>
+                <tr><td>Counts</td><td>1-6, 14-26, 28-37, 42-51</td></tr>
+                <tr><td>Verdict</td><td><span class="charges-badge badge-convicted">Guilty - 19 counts</span></td></tr>
+                <tr><td>Sentence</td><td>24 years, 4 months</td></tr>
+                <tr><td>Profit</td><td>~$89M net from stock (1998-2001)</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Background</h4>
+            <p>Jeffrey Keith Skilling was employed by or acted as a consultant to Enron from the late 1980s. Enron hired him in August 1990. He held various executive positions, was promoted to President and COO in January 1997, and became President and CEO in February 2001. He reported directly to Lay and resigned abruptly on August 14, 2001, citing "personal reasons."</p>
+
+            <h4>Role in the Fraud</h4>
+            <p>Skilling spearheaded the conspiracy until his sudden departure in August 2001. He and Causey set annual and quarterly earnings and cash flow targets ("budget targets") for the company and each business unit, then used various "levers" to achieve them when actual results fell short&mdash;filling gaps that were at times in the hundreds of millions of dollars.</p>
+            <ul>
+                <li>Set and monitored budget targets, manufacturing earnings through fraudulent means when targets weren't met</li>
+                <li>Approved creation of LJM partnerships and Raptor hedging structures with Fastow</li>
+                <li>Made knowingly false statements about EBS, valuing it at $30 billion at January 2000 analyst conference when it had neither the broadband network nor software claimed</li>
+                <li>Concealed massive losses at EES and EBS through fraudulent business segment reporting</li>
+                <li>Approved "Project Grayhawk" to manufacture $85 million in false earnings</li>
+                <li>Fraudulently reserved over $1 billion in trading profits in "Schedule C" reserves</li>
+                <li>Filed false 10-K and 10-Q reports with the SEC and signed false representation letters to auditors</li>
+            </ul>
+
+            <h4>Insider Trading (Counts 42-51)</h4>
+            <p>While in possession of material non-public information, Skilling sold shares of Enron stock generating total proceeds of $62,626,401.90. Between 1998 and 2001, he received approximately $200 million from the sale of Enron stock options and restricted stock, netting over $89 million in profit, and was paid more than $14 million in salary and bonuses.</p>
+
+            <div class="quote-box">
+                "Enron's business is in great shape" and "I know this is a bad stock market but Enron's in good shape."
+                <div class="attribution">&mdash; Jeffrey Skilling, Special Analyst Conference Call, March 23, 2001 (while EBS and EES were failing)</div>
+            </div>
+
+            <h4>Trial &amp; Outcome</h4>
+            <p>Found guilty on May 25, 2006 on 19 of 28 counts, including conspiracy, securities fraud, insider trading, and making false statements to auditors. Sentenced to 24 years and 4 months in federal prison on October 23, 2006. His sentence was later reduced to 14 years in a 2013 resentencing agreement. Released from custody in February 2019.</p>
+        </div>
+    </div>
+</div>
+
+<!-- RICHARD CAUSEY -->
+<div class="person-card" id="richard-causey">
+    <div class="person-card-header">
+        Richard A. Causey
+        <span class="person-role-badge">Chief Accounting Officer</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">RC</div>
+            <table class="person-meta-table">
+                <tr><td>Title</td><td>Chief Accounting Officer (CAO)</td></tr>
+                <tr><td>Tenure</td><td>1991 &ndash; 2002</td></tr>
+                <tr><td>Counts</td><td>1-11, 14-22, 24-26, 28-29, 31-37, 52-53</td></tr>
+                <tr><td>Verdict</td><td><span class="charges-badge badge-plea">Plea Deal</span></td></tr>
+                <tr><td>Sentence</td><td>5.5 years (66 months)</td></tr>
+                <tr><td>Profit</td><td>~$5M net from stock (1998-2001)</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Background</h4>
+            <p>Richard A. Causey was a certified public accountant. From 1986 to 1991, he was employed by Arthur Andersen LLP and provided audit services to Enron as its outside auditor. In 1991, Enron hired Causey as Assistant Controller of Enron Gas Services Group. From 1992 to 1997, he served in various executive positions. In 1998, Causey became Enron's Chief Accounting Officer.</p>
+
+            <h4>Role in the Fraud</h4>
+            <p>As CAO, Causey managed Enron's accounting practices and reported to Lay and Skilling. Together with the CFO Andrew Fastow and Treasurer Ben Glisan, Causey was a principal manager of Enron's finances. He routinely participated in discussions with securities analysts and signed Enron's annual and quarterly SEC filings.</p>
+            <ul>
+                <li>Managed the creation and execution of SPEs and Raptor hedging structures</li>
+                <li>Signed the "Global Galactic" agreement with Fastow, memorializing secret side-deals</li>
+                <li>Fraudulently increased asset valuations (e.g., Mariner Energy by $100M) to meet earnings targets</li>
+                <li>Circumvented FAS 125/140 accounting standards for financial asset sales</li>
+                <li>Concealed EES failures by manipulating business segment reporting</li>
+                <li>Shifted EBS costs to other books, changed depreciable life of assets, and halved bonus accruals to hide losses</li>
+                <li>Signed false quarterly and annual representation letters to Enron's auditors</li>
+            </ul>
+
+            <h4>Money Laundering (Counts 7-11)</h4>
+            <p>Causey was separately charged with money laundering conspiracy and substantive money laundering counts related to the Raptor transactions, involving wire transfers totaling millions of dollars among Enron, LJM, Talon, and Timberwolf entities.</p>
+
+            <h4>Trial &amp; Outcome</h4>
+            <p>Causey pled guilty to securities fraud on December 28, 2005, just before the trial was set to begin. He was sentenced to 66 months (5.5 years) in federal prison. His cooperation was reportedly a significant factor in the government's case against Lay and Skilling.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== NAMED CONSPIRATORS ===================== -->
+<h2 class="section-heading">Named Conspirators</h2>
+
+<!-- ANDREW FASTOW -->
+<div class="person-card" id="andrew-fastow">
+    <div class="person-card-header">
+        Andrew S. Fastow
+        <span class="person-role-badge">Chief Financial Officer</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">AF</div>
+            <table class="person-meta-table">
+                <tr><td>Title</td><td>Chief Financial Officer</td></tr>
+                <tr><td>Role</td><td>Named Conspirator; Government Cooperator</td></tr>
+                <tr><td>Verdict</td><td><span class="charges-badge badge-cooperator">Cooperator</span></td></tr>
+                <tr><td>Sentence</td><td>6 years</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Background &amp; Role in the Fraud</h4>
+            <p>Andrew Stuart Fastow served as Enron's Chief Financial Officer and supervised structured finance, cash flow, and debt management activities. He was the principal architect of the off-balance-sheet partnerships that concealed Enron's true financial condition.</p>
+            <ul>
+                <li>Created and served as managing partner of LJM Cayman (LJM1 and LJM2), the investment partnerships that were purportedly independent third parties but were in fact controlled by Fastow</li>
+                <li>Exploited his dual role as Enron's CFO and LJM's general partner to ensure LJM acted as Enron's surrogate rather than an independent entity</li>
+                <li>Entered into the secret "Global Galactic" agreement with Causey memorializing illegal side-deals</li>
+                <li>Negotiated secret oral side-deals guaranteeing LJM against equity risk in transactions with Enron</li>
+                <li>Personally profited tens of millions of dollars from the LJM arrangements</li>
+            </ul>
+
+            <div class="quote-box">
+                "Certainly what Andy Fastow did they called 'criminal,' and rightfully so."
+                <div class="attribution">&mdash; Kenneth Lay, during cross-examination at trial, 2006</div>
+            </div>
+
+            <h4>Legal Outcome</h4>
+            <p>Fastow pled guilty to two counts of conspiracy in January 2004. He became the government's key cooperating witness and testified extensively at the Lay-Skilling trial. Originally facing a potential 10-year sentence, he was sentenced to 6 years in federal prison in September 2006. Released in 2011.</p>
+        </div>
+    </div>
+</div>
+
+<!-- BEN GLISAN -->
+<div class="person-card" id="ben-glisan">
+    <div class="person-card-header">
+        Ben F. Glisan Jr.
+        <span class="person-role-badge">Treasurer</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">BG</div>
+            <table class="person-meta-table">
+                <tr><td>Title</td><td>Treasurer of Enron</td></tr>
+                <tr><td>Role</td><td>Named Conspirator</td></tr>
+                <tr><td>Verdict</td><td><span class="charges-badge badge-plea">Plea Deal</span></td></tr>
+                <tr><td>Sentence</td><td>5 years</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Role in the Fraud</h4>
+            <p>Ben Glisan served as Enron's Treasurer and assisted in supervising Enron's structured finance, cash flow, and debt management activities. He was identified in the indictment as one of the key conspirators who worked with Lay, Skilling, Causey, and Fastow.</p>
+            <p>Glisan became the first Enron executive to be sent to prison when he pled guilty to a single count of conspiracy to commit wire and securities fraud in September 2003. He was sentenced to 5 years and was immediately taken into custody, an unusual step that sent a strong signal to other potential cooperators.</p>
+        </div>
+    </div>
+</div>
+
+<!-- DAVID DELAINEY -->
+<div class="person-card" id="david-delainey">
+    <div class="person-card-header">
+        David W. Delainey
+        <span class="person-role-badge">CEO, ENA &amp; EES</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">DD</div>
+            <table class="person-meta-table">
+                <tr><td>Title</td><td>CEO, Enron North America &amp; Enron Energy Services</td></tr>
+                <tr><td>Role</td><td>Named Conspirator; Government Witness</td></tr>
+                <tr><td>Verdict</td><td><span class="charges-badge badge-cooperator">Cooperator</span></td></tr>
+                <tr><td>Sentence</td><td>30 months</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Role in the Fraud</h4>
+            <p>David Delainey was the CEO of two major Enron business units: Enron North America (ENA) and Enron Energy Services (EES). He supervised large portions of Enron's wholesale energy business and later its retail energy business. The indictment identifies Delainey as one of Lay, Skilling, and Causey's numerous conspirators.</p>
+            <p>During the trial, Kenneth Lay testified that Delainey had discussed a critical employee email (the "Ceconi email") with him that described hiding losses and fraudulent contracts at EES. Delainey pled guilty to insider trading and cooperated with prosecutors, testifying at trial about the fraudulent concealment of losses at EES. He was sentenced to 30 months.</p>
+        </div>
+    </div>
+</div>
+
+<!-- WESLEY COLWELL -->
+<div class="person-card" id="wesley-colwell">
+    <div class="person-card-header">
+        Wesley Colwell
+        <span class="person-role-badge">CAO, Enron North America</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">WC</div>
+            <table class="person-meta-table">
+                <tr><td>Title</td><td>Chief Accounting Officer, Enron North America</td></tr>
+                <tr><td>Role</td><td>Named Conspirator</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Role in the Fraud</h4>
+            <p>Wesley Colwell served as the Chief Accounting Officer of Enron North America (ENA), managing the accounting for Enron's wholesale energy business. He was identified in the superseding indictment as one of the conspirators who assisted Lay, Skilling, and Causey in the fraudulent scheme.</p>
+        </div>
+    </div>
+</div>
+
+<!-- MICHAEL KOPPER -->
+<div class="person-card" id="michael-kopper">
+    <div class="person-card-header">
+        Michael Kopper
+        <span class="person-role-badge">Managing Director, Global Finance</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">MK</div>
+            <table class="person-meta-table">
+                <tr><td>Title</td><td>Managing Director, Global Finance Group</td></tr>
+                <tr><td>Role</td><td>Named Conspirator; First to Plead Guilty</td></tr>
+                <tr><td>Verdict</td><td><span class="charges-badge badge-cooperator">Cooperator</span></td></tr>
+                <tr><td>Sentence</td><td>3 years, 1 month</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Role in the Fraud</h4>
+            <p>Michael Kopper was a Managing Director in Enron's Global Finance group who conducted structured finance activities for Enron and assisted in running important Enron off-balance sheet vehicles. He became the first Enron executive to plead guilty in August 2002.</p>
+            <p>Kopper ran several of the off-balance-sheet entities that were central to the fraud. Kenneth Lay referenced during his trial testimony that Fastow had claimed to have sold his interest in LJM to Kopper, which Lay said had been one of the "lies" that came to light. Kopper cooperated extensively with prosecutors and was sentenced to 37 months in prison.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== WHISTLEBLOWER ===================== -->
+<h2 class="section-heading">Whistleblower</h2>
+
+<div class="person-card" id="sherron-watkins">
+    <div class="person-card-header">
+        Sherron Watkins
+        <span class="person-role-badge">VP, Corporate Development</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">SW</div>
+            <table class="person-meta-table">
+                <tr><td>Title</td><td>Vice President, Corporate Development</td></tr>
+                <tr><td>Role</td><td><span class="charges-badge badge-witness">Whistleblower</span></td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Role in the Case</h4>
+            <p>Sherron Watkins was a Vice President at Enron who became the case's most prominent whistleblower. In August 2001, shortly after Skilling's resignation, Watkins wrote a memo to Kenneth Lay warning that the company "could implode in a wave of accounting scandals."</p>
+            <p>During Kenneth Lay's cross-examination at trial, government prosecutor John Hueston established that Lay knew Ms. Watkins had warned him back in August that Enron could implode, as well as other specific notifications she gave him. Lay acknowledged that an investigation was conducted but claimed it found the accounting to be appropriate.</p>
+
+            <div class="quote-box">
+                "And, sir, when you said that, 'I could not have ever contemplated those events,' you knew that Ms. Watkins had warned you back in August that Enron could implode in a wave of accounting scandals, as well as other specific notification she gave you, right, sir?"<br><br>
+                "Yes. And, of course, we had an investigation of that."
+                <div class="attribution">&mdash; Exchange between prosecutor John Hueston and Kenneth Lay, trial transcript, May 2, 2006</div>
+            </div>
+
+            <p>Watkins was never charged with any crime. She was later named one of Time magazine's "Persons of the Year" for 2002 alongside two other corporate whistleblowers.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== TRIAL WITNESSES ===================== -->
+<h2 class="section-heading">Trial Witnesses</h2>
+
+<!-- CHRISTOPHER BARRY -->
+<div class="person-card" id="christopher-barry">
+    <div class="person-card-header">
+        Christopher B. Barry
+        <span class="person-role-badge">Expert Witness &mdash; Defense</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">CB</div>
+            <table class="person-meta-table">
+                <tr><td>Title</td><td>Professor of Finance, Texas Christian University</td></tr>
+                <tr><td>Expertise</td><td>Finance &amp; Financial Economics</td></tr>
+                <tr><td>Called by</td><td>Defense (Kenneth Lay)</td></tr>
+                <tr><td>Fee</td><td>$600/hour</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Background</h4>
+            <p>Christopher B. Barry is a Professor of Finance at Texas Christian University (TCU), holding the Robert and Maria Lowdon Chair of Business Administration. He received his doctorate from Indiana University in 1973 and published approximately 38-39 articles in leading finance journals. He founded centers for the study of financial institutions at both SMU and the University of Florida.</p>
+
+            <h4>Testimony</h4>
+            <p>Barry was called as an expert defense witness for Kenneth Lay in the 2006 trial. He had previously worked on the Enron civil litigation starting in March/April 2002 and was asked to assist with the criminal case after the indictment in 2004. His total fees for work on behalf of Lay were approximately $640,000-$650,000 over four years. He testified without compensation at trial due to Lay's financial circumstances.</p>
+            <p>Barry's key testimony concerned:</p>
+            <ul>
+                <li>Analysis of Lay's stock holdings demonstrating that approximately 90% of his liquid assets were Enron stock, indicating overconfidence rather than lack of belief in the company</li>
+                <li>Expert opinion that Lay's stock sales were forced by margin calls, not voluntary insider selling</li>
+                <li>Application of the Malmendier and Tate "CEO Overconfidence" research to argue Lay's holding patterns showed genuine belief in Enron</li>
+                <li>Demonstration that by November 2001, Lay's debt (~$8 million) nearly equaled his remaining collateral (~$15 million)</li>
+            </ul>
+            <p>Much of Barry's testimony on CEO overconfidence was ultimately excluded by Judge Sim Lake under Rule 704B as inadmissible expert testimony on the mental state of a criminal defendant.</p>
+        </div>
+    </div>
+</div>
+
+<!-- JERRY ARNOLD -->
+<div class="person-card" id="jerry-arnold">
+    <div class="person-card-header">
+        Jerry Arnold
+        <span class="person-role-badge">Expert Witness</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">JA</div>
+            <table class="person-meta-table">
+                <tr><td>Expertise</td><td>Accounting</td></tr>
+                <tr><td>Called by</td><td>Defense</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Testimony</h4>
+            <p>Jerry Arnold provided expert testimony and prepared a detailed written testimony in the Enron case. His testimony related to accounting practices and standards relevant to the charges. Both a testimony document and transcript from his court appearance are included in the case files, indicating he provided both written and oral expert analysis at trial.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ROBERT MACLANE -->
+<div class="person-card" id="robert-maclane">
+    <div class="person-card-header">
+        Robert Drayton McLane Jr.
+        <span class="person-role-badge">Character Witness &mdash; Defense</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">RM</div>
+            <table class="person-meta-table">
+                <tr><td>Title</td><td>Owner, Houston Astros; Chairman, McLane Company</td></tr>
+                <tr><td>Called by</td><td>Defense (Kenneth Lay)</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Background</h4>
+            <p>Robert Drayton McLane Jr. was born in Cameron, Texas and attended Baylor University and Michigan State University (M.A., 1959). He ran McLane Company, a family grocery distribution business founded by his grandfather in 1894, expanding it into a major distributor to supermarkets, convenience stores, and fast-food restaurants nationwide. The company merged with Wal-Mart in 1991. He purchased the Houston Astros in 1993.</p>
+
+            <h4>Testimony</h4>
+            <p>McLane testified as a character witness for Kenneth Lay. He described how he first came to know Lay through the effort to build a new baseball stadium in Houston. Rich Kinder, then Enron's president, introduced them. Lay personally helped raise $35 million in short-term funding for the stadium project and made over 30 civic speeches to help win the stadium referendum.</p>
+            <p>McLane testified that Lay was deeply involved in Houston philanthropy, including chairing the United Way (raising over $70 million) and building a new United Way headquarters ($25 million campaign). He described Lay as "very honorable" and someone whose word people would "take to the bank."</p>
+            <p>On cross-examination by prosecutor Cliff Stricklin, McLane acknowledged he did not work on the business side of Enron and had no knowledge of its corporate operations.</p>
+        </div>
+    </div>
+</div>
+
+<!-- EDWARD BRONSON -->
+<div class="person-card" id="edward-bronson">
+    <div class="person-card-header">
+        Edward J. Bronson
+        <span class="person-role-badge">Trial Witness</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">EB</div>
+            <table class="person-meta-table">
+                <tr><td>Role</td><td>Trial Witness</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Testimony</h4>
+            <p>Edward J. Bronson provided testimony in the Enron trial. His transcript is included in the case files as part of the trial proceedings in <i>United States v. Skilling</i>.</p>
+        </div>
+    </div>
+</div>
+
+<!-- GEORGE KINNEAR -->
+<div class="person-card" id="george-kinnear">
+    <div class="person-card-header">
+        George Kinnear
+        <span class="person-role-badge">Trial Witness</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">GK</div>
+            <table class="person-meta-table">
+                <tr><td>Role</td><td>Trial Witness</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Testimony</h4>
+            <p>George Kinnear (listed as "Groge Kinnear" in the case file) provided testimony in the Enron trial. His transcript is included in the case files as part of the proceedings.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== LEGAL TEAMS ===================== -->
+<h2 class="section-heading" id="prosecution">Prosecution Team</h2>
+
+<table class="wiki-table">
+    <thead>
+        <tr><th>Name</th><th>Title</th><th>Role in Case</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Joshua R. Hochberg</td><td>Acting U.S. Attorney</td><td>Lead prosecutor on the indictment</td></tr>
+        <tr><td>Andrew Weissmann</td><td>Director, Enron Task Force</td><td>Led the DOJ Enron Task Force</td></tr>
+        <tr><td>Sean M. Berkowitz</td><td>Special Attorney, Enron Task Force</td><td>Trial prosecutor</td></tr>
+        <tr><td>John H. Hemann</td><td>Special Attorney, Enron Task Force</td><td>Trial prosecutor</td></tr>
+        <tr><td>John H. Hueston</td><td>Special Attorney, Enron Task Force</td><td>Lead cross-examiner of Kenneth Lay at trial</td></tr>
+        <tr><td>Linda A. Lacewell</td><td>Special Attorney, Enron Task Force</td><td>Trial prosecutor</td></tr>
+        <tr><td>Kathryn H. Ruemmler</td><td>Special Attorney, Enron Task Force</td><td>Trial prosecutor (later White House Counsel)</td></tr>
+        <tr><td>Laurel Loomis</td><td>Trial Attorney, Enron Task Force</td><td>Trial prosecutor</td></tr>
+        <tr><td>Patrick Murphy</td><td>Trial Attorney, Enron Task Force</td><td>Trial prosecutor</td></tr>
+        <tr><td>Cliff Stricklin</td><td>Prosecutor</td><td>Cross-examined Robert McLane at trial</td></tr>
+        <tr><td>Robb Adkins</td><td>Prosecutor</td><td>Objected to defense expert testimony at trial</td></tr>
+        <tr><td>Jeffrey Barker</td><td>Prosecutor</td><td>Trial team member</td></tr>
+    </tbody>
+</table>
+
+<h2 class="section-heading" id="defense">Defense Attorneys</h2>
+
+<table class="wiki-table">
+    <thead>
+        <tr><th>Name</th><th>Firm</th><th>Client</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Daniel M. Petrocelli</td><td>O'Melveny and Myers LLP, Los Angeles</td><td>Jeffrey K. Skilling (lead counsel)</td></tr>
+        <tr><td>M. Randall Oppenheimer</td><td>O'Melveny and Myers LLP</td><td>Jeffrey K. Skilling</td></tr>
+        <tr><td>Matt Kline</td><td>O'Melveny and Myers LLP</td><td>Jeffrey K. Skilling</td></tr>
+        <tr><td>Mark C. Holscher</td><td>O'Melveny &amp; Myers LLP, Los Angeles</td><td>Jeffrey K. Skilling</td></tr>
+        <tr><td>Ron Woods</td><td>Attorney at Law, Houston</td><td>Jeffrey K. Skilling</td></tr>
+        <tr><td>Chip B. Lewis</td><td>Liz Vittor, Attorneys at Law, Houston</td><td>Kenneth L. Lay (lead counsel)</td></tr>
+        <tr><td>George McCall Secrest Jr.</td><td>Bennett &amp; Secrest, Houston</td><td>Kenneth L. Lay</td></tr>
+        <tr><td>Bruce W. Collins</td><td>Carrington, Coleman, Sloman &amp; Blumenthal, Dallas</td><td>Kenneth L. Lay (presented Christopher Barry)</td></tr>
+    </tbody>
+</table>
+
+<h2 class="section-heading" id="judge">Presiding Judge</h2>
+
+<div class="person-card">
+    <div class="person-card-header">
+        Hon. Sim Lake
+        <span class="person-role-badge">U.S. District Judge</span>
+    </div>
+    <div class="person-card-body">
+        <div class="person-sidebar">
+            <div class="person-avatar">SL</div>
+            <table class="person-meta-table">
+                <tr><td>Court</td><td>U.S. District Court, S.D. Texas</td></tr>
+                <tr><td>Division</td><td>Houston</td></tr>
+            </table>
+        </div>
+        <div class="person-content">
+            <h4>Role in the Case</h4>
+            <p>Judge Sim Lake of the United States District Court for the Southern District of Texas, Houston Division, presided over the Enron criminal trial. The trial ran from January to May 2006 and was one of the most closely watched corporate fraud trials in American history.</p>
+            <p>During the trial, Judge Lake made several notable rulings visible in the transcripts, including sustaining the government's objection to defense expert Christopher Barry's testimony on CEO overconfidence under Rule 704B (prohibiting expert opinion on a defendant's mental state in criminal cases) and Rule 403 (marginal relevance outweighed by potential for confusion). He also managed discovery disputes regarding undisclosed expert slides and mediated contentious exchanges between counsel.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SOURCES ===================== -->
+<h2 class="section-heading" id="sources">Source Documents</h2>
+<p>All biographical information on this page was extracted from the following case documents:</p>
+<ol class="source-list">
+    <li><b>Government Indictment</b> &mdash; <i>United States v. Richard A. Causey, Jeffrey K. Skilling, and Kenneth L. Lay</i>, 2004 WL 1553217 (S.D.Tex.), Cr. No. H-04-25 (S-2), July 7, 2004. Superseding Indictment, 37 pages.</li>
+    <li><b>Kenneth Lay Transcript</b> &mdash; Transcript of Jury Trial Before the Honorable Sim Lake, Volume 49, May 2, 2006. Cross-examination by Mr. Hueston and redirect by Mr. Secrest.</li>
+    <li><b>Christopher Barry Transcript</b> &mdash; Expert Trial Transcript, <i>USA v. Skilling</i>, 2004 WL 3809654 (S.D.Tex.), No. H-04-025SS. Defense witness direct examination by Mr. Collins.</li>
+    <li><b>Robert MacLane Testimony</b> &mdash; Expert Trial Transcript, <i>USA v. Skilling</i>, 2004 WL 3804947 (S.D.Tex.), No. H04025SS. Defense character witness.</li>
+    <li><b>Edward J. Bronson Transcript</b> &mdash; Trial transcript testimony.</li>
+    <li><b>George Kinnear Transcript</b> &mdash; Trial transcript testimony.</li>
+    <li><b>Jerry Arnold Testimony &amp; Transcript</b> &mdash; Expert witness written testimony and trial transcript.</li>
+    <li><b>Govt Motion Against Judgment of Acquittal</b> &mdash; Government post-trial motion.</li>
+    <li><b>Govt Objection to Summary Testimony</b> &mdash; Government objection filing.</li>
+</ol>
+
+</main>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="page-footer">
+    <p>This page was generated from court documents in the Enron case dataset. All information is derived from official legal filings, trial transcripts, and related court documents. For educational purposes only.</p>
+    <p>&copy; 2024 EnronPedia &mdash; A reference compiled from public court records</p>
+</footer>
+
+</body>
+</html>
